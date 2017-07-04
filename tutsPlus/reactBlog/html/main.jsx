@@ -1,3 +1,8 @@
+var Router = window.ReactRouter.Router;
+var Route = window.ReactRouter.Route;
+var hashHistory = window.ReactRouter.hashHistory;
+var Link = window.ReactRouter.Link;
+
 class Signin extends React.Component {
   constructor(props){
     super(props);
@@ -38,12 +43,13 @@ class Signin extends React.Component {
           <input type="password" onChange={this.handlePasswordChange} id="inputPassword" className="form-control" placeholder="Password" required />
           <button className="btn btn-lg btn-primary btn-block" onClick={this.signIn} type="button"> Sign in</button>
         </form>
+        <Link to="/signup">{'Signup'}</Link>
       </div>
     )
   }
 }
 
-class SignUp extends React.Component{
+class Signup extends React.Component{
   render(){
     return(
       <div>
@@ -55,12 +61,16 @@ class SignUp extends React.Component{
           <input type="password" onChange={this.handlePasswordChange} id="inputPassword" className="form-control" placeholder="Password" required />
           <button className="btn btn-lg btn-primary btn-block" onClick={this.signUp} type="button">Sign Up</button>
         </form>
+        <Link to="/">{'Signin'}</Link>
       </div>
     )
   }
 }
 
 ReactDOM.render(
-  <Signin />,
+  <Router history={hashHistory}>
+    <Route component={Signin} path="/"></Route>
+    <Route component={Signup} path="/signup"></Route>
+  </Router>,
   document.getElementById("app")
 );

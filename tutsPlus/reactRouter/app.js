@@ -5,7 +5,6 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 var hashHistory = {}
 
-
 const App = () => {
     return (
         <h2>{'TutsPlus - Welcome to React Routing Basic!'}</h2>
